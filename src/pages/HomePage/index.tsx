@@ -1,5 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
+import { Button } from "@mui/material";
+
 
 const HomePage = () => {
   return (
@@ -13,7 +15,13 @@ const HomePage = () => {
     >
       <Navbar />
       <main style={{ overflowY: "scroll" }}>
-        
+        <Button
+          onClick={() => {
+            
+          }}
+        >
+          Notific
+        </Button>
       </main>
     </div>
   );
