@@ -6,11 +6,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import MenuIcon from "@mui/icons-material/Menu";
 import {
   Adb,
   Close as CloseIcon,
@@ -21,18 +17,6 @@ import {
 const pages = ["Products", "Pricing", "Blog"];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
   return (
     <AppBar
       position="sticky"
@@ -62,7 +46,12 @@ function ResponsiveAppBar() {
                 "-webkit-app-region": "no-drag",
               }}
             >
-              <MinimizeIcon />
+              <MinimizeIcon
+                sx={{
+                  position: "relative",
+                  bottom: 6,
+                }}
+              />
             </IconButton>
           </Tooltip>
 

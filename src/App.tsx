@@ -4,7 +4,7 @@ import { ThemeProvider } from "@emotion/react";
 import HomePage from "./pages/HomePage";
 import { theme } from "./core/theme";
 
-import "./index.css";
+import "./styles/index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
