@@ -1,6 +1,6 @@
 {
-  "name": "electron-react",
-  "productName": "electron-react",
+  "name": "password-generator",
+  "productName": "Password Generator",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".webpack/main",
