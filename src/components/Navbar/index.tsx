@@ -8,13 +8,11 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import {
-  Adb,
   Close as CloseIcon,
   Fullscreen as FullscreenIcon,
   Minimize as MinimizeIcon,
+  Security as SecurityIcon,
 } from "@mui/icons-material";
-
-const pages = ["Products", "Pricing", "Blog"];
 
 function ResponsiveAppBar() {
   return (
@@ -32,7 +30,7 @@ function ResponsiveAppBar() {
         variant="dense"
       >
         <Box sx={{ display: "flex" }}>
-          <Adb />
+          <SecurityIcon />
         </Box>
 
         <Box sx={{ flexGrow: 0, display: "flex", gap: 0.5 }}>
