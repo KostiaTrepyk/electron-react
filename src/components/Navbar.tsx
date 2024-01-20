@@ -1,6 +1,6 @@
 import React from "react";
 const { ipcRenderer } = window.require("electron");
-import { Channel } from "../../../electron/types/types";
+import { Channel } from "../../electron/types/types";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -14,7 +14,7 @@ import {
   Security as SecurityIcon,
 } from "@mui/icons-material";
 
-function ResponsiveAppBar() {
+function Navbar() {
   return (
     <AppBar
       position="sticky"
@@ -82,4 +82,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default Navbar;
