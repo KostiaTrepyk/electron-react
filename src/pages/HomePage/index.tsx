@@ -6,22 +6,15 @@ import {
 } from "@mui/icons-material";
 
 import { usePasswordContext } from "../../contexts/PasswordContext/usePasswordContext";
-import Layout from "../../components/Layout";
 import SettingsMenu from "../../components/SettingsMenu";
 
 const HomePage = () => {
   const [isSettingOpened, setIsSettingOpened] = React.useState<boolean>(false);
   const {
     showPassword,
-    passwordLength,
     generatedPassword,
-    charsType,
-    isSpecialChars,
 
     changeShowPassword,
-    changePasswordLength,
-    changeCharsType,
-    changeIsSpecialChars,
     generateNewPassword,
   } = usePasswordContext();
 
@@ -30,7 +23,7 @@ const HomePage = () => {
   }
 
   return (
-    <Layout>
+    <>
       <Box
         sx={{
           flexGrow: 1,
@@ -106,7 +99,7 @@ const HomePage = () => {
         open={isSettingOpened}
         onClose={() => setIsSettingOpened(false)}
       />
-    </Layout>
+    </>
   );
 };
 
