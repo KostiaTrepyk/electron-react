@@ -18,6 +18,7 @@ import {
 } from "@mui/icons-material";
 import { useRouterContext } from "../core/router/hooks/useRouterContext";
 import { usePasswordContext } from "../contexts/PasswordContext/usePasswordContext";
+import { type CharsType } from "../helpers/generatePassword";
 
 interface SettingsMenuProps {
   open: boolean;
@@ -31,9 +32,9 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ open, onClose }) => {
     charsType,
     isSpecialChars,
 
-    changePasswordLength,
-    changeCharsType,
-    changeIsSpecialChars,
+    setPasswordLength,
+    setCharsType,
+    setIsSpecialChars,
     generateNewPassword,
   } = usePasswordContext();
 
@@ -71,14 +72,14 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ open, onClose }) => {
             const newValue = Number(e.currentTarget.value);
 
             if (newValue < 1 || newValue > 100) return;
-            changePasswordLength(Number(e.currentTarget.value));
+            setPasswordLength(Number(e.currentTarget.value));
           }}
         />
 
         <Select
           variant="outlined"
           value={charsType}
-          onChange={(e) => changeCharsType(e.target.value as any)}
+          onChange={(e) => setCharsType(e.target.value as CharsType)}
         >
           <MenuItem value={"alphabetic"}>Alphabetic</MenuItem>
           <MenuItem value={"alphanumeric"}>Alphanumeric</MenuItem>
@@ -89,7 +90,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ open, onClose }) => {
           control={
             <Switch
               checked={isSpecialChars}
-              onChange={(_, checked) => changeIsSpecialChars(checked)}
+              onChange={(_, checked) => setIsSpecialChars(checked)}
             />
           }
           label="Special chars"

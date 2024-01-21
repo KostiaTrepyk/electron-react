@@ -8,10 +8,10 @@ export interface PasswordContext {
   charsType: CharsType;
   isSpecialChars: boolean;
 
-  changeShowPassword: (newVal?: boolean) => void;
-  changePasswordLength: (newVal: number) => void;
-  changeCharsType: (newVal: CharsType) => void;
-  changeIsSpecialChars: (newVal?: boolean) => void;
+  setShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
+  setPasswordLength: React.Dispatch<React.SetStateAction<number>>;
+  setCharsType: React.Dispatch<React.SetStateAction<CharsType>>;
+  setIsSpecialChars: React.Dispatch<React.SetStateAction<boolean>>;
   generateNewPassword: () => void;
 }
 

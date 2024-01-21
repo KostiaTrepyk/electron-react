@@ -21,27 +21,25 @@ const Router: React.FC<RouterProps> = ({
   animateVeiwTransition = false,
 }) => {
   return (
-    <RouterContextProvider>
-      <Layout>
-        <routerContext.Consumer>
-          {({ location }) => {
-            let page = defaultElement;
-            for (const route of routes) {
-              if (route.path === location) page = route.element;
-            }
+    <Layout>
+      <routerContext.Consumer>
+        {({ location }) => {
+          let page = defaultElement;
+          for (const route of routes) {
+            if (route.path === location) page = route.element;
+          }
 
-            if (animateVeiwTransition)
-              return (
-                <ViewTransitionAnimation pageKey={location}>
-                  {page}
-                </ViewTransitionAnimation>
-              );
+          if (animateVeiwTransition)
+            return (
+              <ViewTransitionAnimation pageKey={location}>
+                {page}
+              </ViewTransitionAnimation>
+            );
 
-            return page;
-          }}
-        </routerContext.Consumer>
-      </Layout>
-    </RouterContextProvider>
+          return page;
+        }}
+      </routerContext.Consumer>
+    </Layout>
   );
 };
 
