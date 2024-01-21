@@ -2,14 +2,17 @@ import React from "react";
 import { Box, Button, IconButton, Tooltip, Typography } from "@mui/material";
 import {
   ContentCopy as ContentCopyICon,
+  QuestionMark as QuestionMarkIcon,
   Settings as SettingsIcon,
 } from "@mui/icons-material";
 
 import { usePasswordContext } from "../../contexts/PasswordContext/usePasswordContext";
 import SettingsMenu from "../../components/SettingsMenu";
 import { Keyboard } from "./Keyboard";
+import { useRouterContext } from "../../core/router/hooks/useRouterContext";
 
 const HomePage = () => {
+  const { navigate } = useRouterContext();
   const [isSettingsOpened, setIsSettingsOpened] =
     React.useState<boolean>(false);
   const {
@@ -31,6 +34,16 @@ const HomePage = () => {
   return (
     <>
       <Keyboard toggleSettingsOpened={toggleSettingsOpened} />
+
+      <Tooltip title="Help">
+        <IconButton
+          sx={{ position: "absolute", right: 8, top: 8 }}
+          onClick={() => navigate("/help")}
+          size="large"
+        >
+          <QuestionMarkIcon />
+        </IconButton>
+      </Tooltip>
 
       <Box
         sx={{

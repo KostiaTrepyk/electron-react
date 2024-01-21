@@ -13,10 +13,8 @@ import {
 } from "@mui/material";
 import {
   ArrowBackIosNew as ArrowBackIcon,
-  QuestionMark as QuestionMarkIcon,
   SafetyCheck as SafetyCheckIcon,
 } from "@mui/icons-material";
-import { useRouterContext } from "../core/router/hooks/useRouterContext";
 import { usePasswordContext } from "../contexts/PasswordContext/usePasswordContext";
 import { type CharsType } from "../helpers/generatePassword";
 
@@ -26,7 +24,6 @@ interface SettingsMenuProps {
 }
 
 const SettingsMenu: React.FC<SettingsMenuProps> = ({ open, onClose }) => {
-  const { navigate } = useRouterContext();
   const {
     passwordLength,
     charsType,
@@ -95,15 +92,6 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ open, onClose }) => {
           }
           label="Special chars"
         />
-
-        <Tooltip title="Help">
-          <IconButton
-            sx={{ height: 50, width: 50 }}
-            onClick={() => navigate("/help")}
-          >
-            <QuestionMarkIcon />
-          </IconButton>
-        </Tooltip>
       </Box>
     </Drawer>
   );

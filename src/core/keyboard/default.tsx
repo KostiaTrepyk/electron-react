@@ -10,7 +10,6 @@ const DefaultKeyboard: React.FC<React.PropsWithChildren> = ({ children }) => {
   const isSPressed = useKeyPress("KeyS");
   const isGPressed = useKeyPress("KeyG");
   const isHPressed = useKeyPress("KeyH");
-  const isMPressed = useKeyPress("KeyM");
 
   React.useEffect(() => {
     if (isSPressed) setShowPassword((prev) => !prev);
@@ -21,12 +20,11 @@ const DefaultKeyboard: React.FC<React.PropsWithChildren> = ({ children }) => {
   }, [isGPressed]);
 
   React.useEffect(() => {
-    if (isHPressed && location !== "/help") navigate("/help");
+    if (isHPressed) {
+      if (location !== "/help") navigate("/help");
+      else navigate("/");
+    }
   }, [isHPressed]);
-
-  React.useEffect(() => {
-    if (isMPressed && location !== "/") navigate("/");
-  }, [isMPressed]);
 
   return <>{children}</>;
 };

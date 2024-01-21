@@ -8,9 +8,9 @@ const HelpPage = () => {
   const { navigate } = useRouterContext();
   return (
     <>
-      <Box sx={{ position: "relative" }}>
+      <Box>
         <Tooltip title="Back">
-          <IconButton sx={{ m: 1 }} onClick={() => navigate("/")}>
+          <IconButton sx={{ m: 1 }} onClick={() => navigate("/")} size="large">
             <ArrowBackIosNew />
           </IconButton>
         </Tooltip>
@@ -25,7 +25,7 @@ const HelpPage = () => {
           <Typography sx={{ color: "#2bf" }} component="span">
             H
           </Typography>{" "}
-          - help.
+          - show/hide help.
         </Typography>
 
         <Typography>
@@ -47,13 +47,6 @@ const HelpPage = () => {
             Space
           </Typography>{" "}
           - show/hide settings.
-        </Typography>
-
-        <Typography>
-          <Typography sx={{ color: "#2bf" }} component="span">
-            M
-          </Typography>{" "}
-          - main page.
         </Typography>
       </Box>
     </>
