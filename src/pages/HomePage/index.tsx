@@ -7,14 +7,16 @@ import {
 
 import { usePasswordContext } from "../../contexts/PasswordContext/usePasswordContext";
 import SettingsMenu from "../../components/SettingsMenu";
+import { Keyboard } from "./Keyboard";
 
 const HomePage = () => {
-  const [isSettingOpened, setIsSettingOpened] = React.useState<boolean>(false);
+  const [isSettingsOpened, setIsSettingsOpened] =
+    React.useState<boolean>(false);
   const {
     showPassword,
     generatedPassword,
 
-    changeShowPassword,
+    setShowPassword,
     generateNewPassword,
   } = usePasswordContext();
 
@@ -22,8 +24,14 @@ const HomePage = () => {
     navigator.clipboard.writeText(str);
   }
 
+  function toggleSettingsOpened() {
+    setIsSettingsOpened((prev) => !prev);
+  }
+
   return (
     <>
+      <Keyboard toggleSettingsOpened={toggleSettingsOpened} />
+
       <Box
         sx={{
           flexGrow: 1,
@@ -44,7 +52,7 @@ const HomePage = () => {
                   cursor: "pointer",
                 }}
                 variant="h5"
-                onClick={() => changeShowPassword(!showPassword)}
+                onClick={() => setShowPassword((prev) => !prev)}
               >
                 {showPassword
                   ? generatedPassword
@@ -88,7 +96,7 @@ const HomePage = () => {
           <IconButton
             sx={{ marginInline: "auto" }}
             size="large"
-            onClick={() => setIsSettingOpened(!isSettingOpened)}
+            onClick={() => setIsSettingsOpened(!isSettingsOpened)}
           >
             <SettingsIcon />
           </IconButton>
@@ -96,8 +104,8 @@ const HomePage = () => {
       </Box>
 
       <SettingsMenu
-        open={isSettingOpened}
-        onClose={() => setIsSettingOpened(false)}
+        open={isSettingsOpened}
+        onClose={() => setIsSettingsOpened(false)}
       />
     </>
   );
