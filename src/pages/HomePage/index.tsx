@@ -10,6 +10,7 @@ import { usePasswordContext } from "../../contexts/PasswordContext/usePasswordCo
 import SettingsMenu from "../../components/SettingsMenu";
 import { Keyboard } from "./Keyboard";
 import { useRouterContext } from "../../core/router/hooks/useRouterContext";
+import PasswordComplexity from "../../components/PasswordComplexity";
 
 const HomePage = () => {
   const { navigate } = useRouterContext();
@@ -55,6 +56,7 @@ const HomePage = () => {
       >
         {Boolean(generatedPassword) ? (
           <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+            <PasswordComplexity />
             <Tooltip title={showPassword ? "Hide" : "Reveal"}>
               <Typography
                 sx={{
