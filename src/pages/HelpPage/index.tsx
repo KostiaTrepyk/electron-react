@@ -1,56 +1,66 @@
-import React from "react";
-import { Box, IconButton, Tooltip, Typography } from "@mui/material";
-import { ArrowBackIosNew } from "@mui/icons-material";
+import React, { useState } from "react";
+import { Box, IconButton, Tab, Tooltip, Typography, Tabs } from "@mui/material";
+import { ArrowBackIosNew as ArrowBackIosNewIcon } from "@mui/icons-material";
 
 import { useRouterContext } from "../../core/router/hooks/useRouterContext";
+import KeyboardTab from "./tabs/KayboardTab";
+import PasswordDifficultyTab from "./tabs/PasswordDifficultyTab";
 
 const HelpPage = () => {
   const { navigate } = useRouterContext();
+
+  const [currentTab, setCurrentTab] = useState<number>(0);
+
   return (
     <>
       <Box>
         <Tooltip title="Back">
           <IconButton sx={{ m: 1 }} onClick={() => navigate("/")} size="large">
-            <ArrowBackIosNew />
+            <ArrowBackIosNewIcon />
           </IconButton>
         </Tooltip>
       </Box>
 
-      <Box sx={{ m: 4, display: "flex", flexDirection: "column", gap: 1.5 }}>
-        <Typography sx={{ mb: 1 }} variant="h5">
-          Keyboard
-        </Typography>
-
-        <Typography>
-          <Typography sx={{ color: "#2bf" }} component="span">
-            H
-          </Typography>{" "}
-          - show/hide help.
-        </Typography>
-
-        <Typography>
-          <Typography sx={{ color: "#2bf" }} component="span">
-            S
-          </Typography>{" "}
-          - show/hide password.
-        </Typography>
-
-        <Typography>
-          <Typography sx={{ color: "#2bf" }} component="span">
-            G
-          </Typography>{" "}
-          - generate password.
-        </Typography>
-
-        <Typography>
-          <Typography sx={{ color: "#2bf" }} component="span">
-            Space
-          </Typography>{" "}
-          - show/hide settings.
-        </Typography>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={currentTab}
+          onChange={(_, value) => setCurrentTab(value)}
+          centered
+        >
+          <Tab label="Keyboard" />
+          <Tab label="Password difficulty" />
+        </Tabs>
       </Box>
+
+      <CustomTabPanel value={currentTab} index={0}>
+        <KeyboardTab />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={currentTab} index={1}>
+        <PasswordDifficultyTab />
+      </CustomTabPanel>
     </>
   );
 };
 
 export default HelpPage;
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+function CustomTabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div role="tabpanel" hidden={value !== index} {...other}>
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
