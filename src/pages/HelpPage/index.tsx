@@ -5,6 +5,7 @@ import { ArrowBackIosNew as ArrowBackIosNewIcon } from "@mui/icons-material";
 import { useRouterContext } from "../../core/router/hooks/useRouterContext";
 import KeyboardTab from "./tabs/KayboardTab";
 import PasswordDifficultyTab from "./tabs/PasswordDifficultyTab";
+import CreateGoodPasswordTab from "./tabs/CreateGoodPasswordTab";
 
 const HelpPage = () => {
   const { navigate } = useRouterContext();
@@ -29,6 +30,7 @@ const HelpPage = () => {
         >
           <Tab label="Keyboard" />
           <Tab label="Password difficulty" />
+          <Tab label="How to create a good password" />
         </Tabs>
       </Box>
 
@@ -38,6 +40,10 @@ const HelpPage = () => {
 
       <CustomTabPanel value={currentTab} index={1}>
         <PasswordDifficultyTab />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={currentTab} index={2}>
+        <CreateGoodPasswordTab />
       </CustomTabPanel>
     </>
   );

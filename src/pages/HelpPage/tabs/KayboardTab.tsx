@@ -7,7 +7,8 @@ const KeyboardTab = () => {
     <TabContainer>
       <Typography
         sx={{
-          mb: 2.5 /* fontSize: "clamp(28px, 20px + 2vw, 50px)" */,
+          mb: 2.5,
+          fontWeight: 900 /* fontSize: "clamp(28px, 20px + 2vw, 50px)" */,
         }}
         variant="h5"
       >

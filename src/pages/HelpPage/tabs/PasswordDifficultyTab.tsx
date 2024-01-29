@@ -17,7 +17,7 @@ const PasswordDifficultyTab = () => {
 
   return (
     <TabContainer>
-      <Typography sx={{ mb: 2.5 }} variant="h5">
+      <Typography sx={{ mb: 2.5, fontWeight: 900 }} variant="h5">
         Levels of difficulty
       </Typography>
 
